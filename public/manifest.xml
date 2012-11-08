@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<manifest>
+	<dummy_example>
+		<name>Dummy Example</name>
+		<author>Jekotia</author>
+		<description>This is a non-functional example.</description>
+		<url>http://nope.net/</url>
+		<tags>1,5,16</tags>
+		<latest>1</latest>
+	</dummy_example>
+</manifest>
