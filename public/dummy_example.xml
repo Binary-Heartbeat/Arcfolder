@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<dummy_example>
+	<release version="1">
+			<compatible>1473</compatible>
+			<date>2012-11-08, 12:23AM</date>
+			<url>packages/dummy_example-v1-jekotia.zip</url>
+			<changes>First release.</changes>
+			<install_path>gui/components/MainUI/addons/</install_path>
+	</release>
+</dummy_example>

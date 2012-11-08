@@ -1,10 +1,11 @@
 <?php
 	// Login check
-
 	// <html>
 		// <head>
+			// favicon.ico
+			// assets/main.css
+			// assets/jquery-ui.js (maybe)
 		// </head>
-
 		// <body>
 			// header
 			// nav
@@ -18,7 +19,6 @@
 				// 
 			// footer
 		// </body>
-
 	// </html>
 
 ?>
