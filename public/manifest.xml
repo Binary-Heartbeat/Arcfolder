@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <manifest>
-	<dummy_example>
+	<addon name="dummy_example">
 		<name>Dummy Example</name>
 		<author>Jekotia</author>
 		<description>This is a non-functional example.</description>
 		<url>http://nope.net/</url>
-		<tags>1,5,16</tags>
 		<latest>1</latest>
-	</dummy_example>
+		<package_info>dummy_example.xml</package_info>
+	</addon>
+	<tag id="5">overpowered</tag>
+	<tag id="16">sexy</tag>
 </manifest>
