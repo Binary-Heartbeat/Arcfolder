@@ -1,0 +1,3 @@
+<?php
+	// Generic welcome page
+?>
