@@ -7,17 +7,10 @@
 		// </head>
 		// <body>
 			// header
-				// login button
-			// nav
 			// body
-				// addons list
-				// OR
-				// releases list
-				// OR
-				// author list
-				// OR
-				// author page
+				// image/button link to public repo
+				// image/button link to authors login
+				// brief description of what this site is
 			// footer
 		// </body>
 	// </html>
-?>
