@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <dummy_example>
-	<release version="1">
+	<package version="1">
 		<compatible>0.5.1460</compatible>	
 		<date>2012-11-08, 12:23AM</date>
 		<url>packages/jekotia/dummy_example/dummy_example-v1-jekotia.zip</url>
 		<path>gui/components/MainUI/addons/</path>
 		<changes>First release.</changes>
-	</release>
+	</package>
 </dummy_example>
