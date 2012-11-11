@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2012-11-10 22:22:26
+Date: 2012-11-10 22:58:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -133,10 +133,15 @@ CREATE TABLE `arcfolder_users` (
   `UserID` int(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(15) NOT NULL,
   `UserNiceName` varchar(15) NOT NULL,
+  `UserPassword` varchar(64) NOT NULL,
+  `UserSalt` varchar(3) NOT NULL,
+  `UserToken` varchar(64) DEFAULT NULL,
+  `UserIP` varchar(15) NOT NULL,
+  `UserGroup` int(1) NOT NULL,
   PRIMARY KEY (`UserID`,`UserName`,`UserNiceName`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of arcfolder_users
 -- ----------------------------
-INSERT INTO `arcfolder_users` VALUES ('1', 'Jekotia', 'jekotia');
+INSERT INTO `arcfolder_users` VALUES ('1', 'Jekotia', 'jekotia', '', '', null, '', '0');
