@@ -9,7 +9,7 @@ File Structure
 	./public/xml/clients/*.xml
 	./public/xml/libraries/*.xml
 
-mainfest_addons.xml
+manifest_addons.xml
 	{Lists all addons by name-version}
 	{
 		<addons>
@@ -17,7 +17,7 @@ mainfest_addons.xml
 		</addons>
 	}
 
-mainfest_clients.xml
+manifest_clients.xml
 	{Lists all clients by name-version}
 	{
 		<clients>
@@ -25,7 +25,7 @@ mainfest_clients.xml
 		</clients>
 	}
 
-mainfest_libraries.xml
+manifest_libraries.xml
 	{Lists all libraries by name-version}
 	{
 		<libraries>
