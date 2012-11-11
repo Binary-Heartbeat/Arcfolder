@@ -1,11 +1,21 @@
 <?xml version="1.0"?>
 <manifest>
-	<project name="dummy_example">
+	<project name="example_addon">
 		<author>Jekotia</author>
-		<title>Dummy Example</title>
+		<title>Example Addon</title>
 		<description>This is a non-functional example.</description>
 		<url>http://nope.net/</url>
 		<tags>5,16</tags>
+		<category>1</category>
+		<latest>1</latest>
+	</project>
+	<project name="example_library">
+		<author>Jekotia</author>
+		<title>Example Library</title>
+		<description>This is a non-functional example.</description>
+		<url>http://nope.net/</url>
+		<tags>5,16</tags>
+		<category>2</category>
 		<latest>1</latest>
 	</project>
 </manifest>
