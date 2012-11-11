@@ -1,0 +1,65 @@
+File Structure
+	./public/manifest_addons.xml
+	./public/manifest_clients.xml
+	./public/manifest_libraries.xml
+	./public/packages/addons/*.zip
+	./public/packages/clients/*.zip
+	./public/packages/libraries/*.zip
+	./public/xml/addons/*.xml
+	./public/xml/clients/*.xml
+	./public/xml/libraries/*.xml
+
+mainfest_addons.xml
+	{Lists all addons by name-version}
+	{
+		<addons>
+			<addon>example_addon-0.8.3.0</addon>
+		</addons>
+	}
+
+mainfest_clients.xml
+	{Lists all clients by name-version}
+	{
+		<clients>
+			<client>melder-0.8.0.0</client>
+		</clients>
+	}
+
+mainfest_libraries.xml
+	{Lists all libraries by name-version}
+	{
+		<libraries>
+			<library>melder-0.8.0.0</library>
+		</libraries>
+	}
+	
+*.zip
+	{package_name-version.zip}
+	{e.g. example_addon-0.8.3.0.zip}
+	{e.g. example_library-0.6.7.0.zip}
+	{e.g. melder-0.8.0.0.zip}
+	
+*.xml
+	{package_name-version.xml}
+	{e.g. ./public/packages/addons/example_addon-0.8.3.0.xml}
+	{e.g. ./public/packages/clients/melder-0.8.0.0.xml}
+	{e.g. ./public/packages/libraries/example_library-0.6.7.0.xml}
+
+	{
+		<package>
+			<name>Example Addon</name>
+			<author>Jekotia</author>
+			<description>This is a non-functional example.</description>
+			<project_url>http://nope.net/</project_url>
+			<tag>Reticule</tag>
+			<tag>PvE</tag>
+			<type>Addon</type>
+			<version>0.8.3.0</version>
+			<compatible>0.5.1460</compatible>	
+			<date>2012-11-08, 12:23AM</date>
+			<package_url>./public/packages/example_addon-0.8.3.0.zip</package_url>
+			<path>gui/components/MainUI/addons/</path>
+			<changes>First release.</changes>
+			<dependency version="0.6.7.0">example_library</dependency>
+		</package>
+	}
