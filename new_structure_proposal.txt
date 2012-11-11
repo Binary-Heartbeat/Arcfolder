@@ -57,7 +57,6 @@ manifest_libraries.xml
 			<version>0.8.3.0</version>
 			<compatible>0.5.1460</compatible>	
 			<date>2012-11-08, 12:23AM</date>
-			<package_url>./public/packages/example_addon-0.8.3.0.zip</package_url>
 			<path>gui/components/MainUI/addons/</path>
 			<changes>First release.</changes>
 			<dependency version="0.6.7.0">example_library</dependency>
