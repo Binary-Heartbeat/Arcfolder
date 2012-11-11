@@ -29,7 +29,7 @@ mainfest_libraries.xml
 	{Lists all libraries by name-version}
 	{
 		<libraries>
-			<library>melder-0.8.0.0</library>
+			<library>example_library-0.6.7.0</library>
 		</libraries>
 	}
 	
