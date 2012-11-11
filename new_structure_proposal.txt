@@ -36,8 +36,8 @@ mainfest_libraries.xml
 *.zip
 	{package_name-version.zip}
 	{e.g. example_addon-0.8.3.0.zip}
-	{e.g. example_library-0.6.7.0.zip}
 	{e.g. melder-0.8.0.0.zip}
+	{e.g. example_library-0.6.7.0.zip}
 	
 *.xml
 	{package_name-version.xml}
