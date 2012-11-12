@@ -1,12 +1,9 @@
 File Structure
 	./public/manifest_addons.xml
-	./public/manifest_clients.xml
 	./public/manifest_libraries.xml
 	./public/packages/addons/*.zip
-	./public/packages/clients/*.zip
 	./public/packages/libraries/*.zip
 	./public/xml/addons/*.xml
-	./public/xml/clients/*.xml
 	./public/xml/libraries/*.xml
 
 manifest_addons.xml
@@ -15,14 +12,6 @@ manifest_addons.xml
 		<addons>
 			<addon>example_addon-0.8.3.0</addon>
 		</addons>
-	}
-
-manifest_clients.xml
-	{Lists all clients by name-version}
-	{
-		<clients>
-			<client>example_client-0.2.5.3</client>
-		</clients>
 	}
 
 manifest_libraries.xml
@@ -36,13 +25,11 @@ manifest_libraries.xml
 *.zip
 	{package_name-version.zip}
 	{e.g. example_addon-0.8.3.0.zip}
-	{e.g. example_client-0.2.5.3.zip}
 	{e.g. example_library-0.6.7.0.zip}
 	
 *.xml
 	{package_name-version.xml}
 	{e.g. ./public/packages/addons/example_addon-0.8.3.0.xml}
-	{e.g. ./public/packages/clients/example_client-0.2.5.3.xml}
 	{e.g. ./public/packages/libraries/example_library-0.6.7.0.xml}
 
 	{
