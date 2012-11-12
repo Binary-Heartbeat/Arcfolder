@@ -1,5 +1,8 @@
 <?php
 	// Login check
+		// require functions
+		// call login check function
+		// If fails, redirect to $_['web_root']/manager/login.php
 	// <html>
 		// <head>
 			// favicon.ico
@@ -10,8 +13,6 @@
 			// header
 			// nav
 			// body
-				// login
-				// OR
 				// 
 				// OR
 				// 

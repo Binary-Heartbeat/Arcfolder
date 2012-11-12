@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+	<name>Example Client</name>
+	<author>Jekotia</author>
+	<description>This is a non-functional example.</description>
+	<project_url>http://nope.net/</project_url>
+	<type>Client</type>
+	<version>0.2.5.3</version>
+	<date>2012-11-08, 12:23AM</date>
+	<changes>First release.</changes>
+</package>
