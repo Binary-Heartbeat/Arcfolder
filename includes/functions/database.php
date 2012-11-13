@@ -12,8 +12,8 @@ function _db_connect($_) {
 function _db_getRow($_, $table, $column, $value) {
 	$con = _db_connect($_);
 	$query = "SELECT * FROM ".$_['table_prefix'].$table." WHERE `".$column."` = '".$value."';";
-//	$statement = $con->prepare($query);
-//	$statement->execute();
+	//$statement = $con->prepare($query);
+	//$statement->execute();
 	$statement = $con->query($query);
 	$row = $statement->fetch();
 	//$row = $statement->closeCursor();
