@@ -1,4 +1,8 @@
 <?php
+require_once('../config.php');
+require_once($_['fs_root'].'settings.php');
+require_once($_['fs_root'].'includes/functions/database.php');
+require_once($_['fs_root'].'includes/functions/auth.php');
 	// Login check
 		// require functions
 		// call login check function

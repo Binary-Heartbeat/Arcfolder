@@ -2,13 +2,13 @@
 // Rename to config.php to use.
 
 //	Hostname for your database server
-$_['db_host'] = 'host';
+$_['db_host'] = 'localhost';
 
 //	Username to connect to the database server with
-$_['db_user'] = 'user';
+$_['db_user'] = 'root';
 
 //	Password to connect to the database server with
-$_['db_pass'] = 'pass';
+$_['db_pass'] = 'november';
 
 //	The name of the database for Arcfolder
 $_['db_name'] = 'arcfolder';
@@ -22,6 +22,9 @@ $_['db_charset'] = 'utf8';
 //	The Database Collate type. Don't change this if in doubt.
 $_['db_collate'] = '';
 
+// Localization file to use
+$_['localization'] = 'en-uk';
+
 //	Turns debug mode within Arcfolder on/off. Currently not working.
 //	Can be true or false
 $_['debug'] = false;
@@ -31,4 +34,4 @@ $_['cookie_token_title'] = 'herpaderpa2';
 
 $_['site_name'] = 'Arcfolder Official Addons Repository';
 $_['web_root'] = '/public/arcfolder/';
-$_['fs_root'] = 'C:\\xampp\\htdocs\\public\\arcfolder\\';
+$_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
