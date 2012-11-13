@@ -16,7 +16,7 @@ function _db_getRow($_, $table, $column, $value) {
 	$statement->execute();
 	$row = $statement->fetch();
 	//$row = $statement->closeCursor();
-	return $row
+	return $row;
 }
 
 function _db_rowExists($_, $table, $column, $value) {
