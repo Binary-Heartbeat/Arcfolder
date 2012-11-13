@@ -5,6 +5,8 @@
 		$localization["reg_form_password"] = "Password";
 		$localization["reg_form_password_again"] = "Password Again";
 		$localization["reg_form_register"] = "Register";
+		$localization["reg_form_email"] = "Email";
+		$localization["reg_form_email_again"] = "Email Again";		
 	// Errors
 		$localization["reg_err_password_short"] = "Password is too short.";
 		$localization["reg_err_password_mismatch"] = "";

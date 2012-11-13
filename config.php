@@ -1,6 +1,4 @@
 <?php
-// Rename to config.php to use.
-
 //	Hostname for your database server
 $_['db_host'] = 'localhost';
 
@@ -29,9 +27,14 @@ $_['localization'] = 'en-uk';
 //	Can be true or false
 $_['debug'] = false;
 
+// Name of the site used in page titles
+$_['site_name'] = 'Arcfolder Official Addons Repository';
+
+// Location of the Arcfolder installation relative to the domain
+$_['web_root'] = '/public/arcfolder/';
+
+// Location of the Arcfolder installation on the filesystem
+$_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
+
 $_['cookie_username_title'] = 'herpaderpa1';
 $_['cookie_token_title'] = 'herpaderpa2';
-
-$_['site_name'] = 'Arcfolder Official Addons Repository';
-$_['web_root'] = '/public/arcfolder/';
-$_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
