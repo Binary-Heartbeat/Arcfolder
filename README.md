@@ -22,7 +22,7 @@ Arcfolder Clients
 For Arcfolder Client Developers
 ===============================
 What kinds of files does an Arcfolder repository use?
-------------------------------------------------------
+-----------------------------------------------------
 Arcfolder only accepts `.zip` files for packages. This is to ensure compatibility with any client. All package data is stored in `.xml`'s.
 How do I read the addons/libraries database?
 --------------------------------------------

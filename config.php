@@ -38,3 +38,6 @@ $_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
 
 $_['cookie_username_title'] = 'herpaderpa1';
 $_['cookie_token_title'] = 'herpaderpa2';
+
+
+require_once($_['fs_root'].'settings.php'); // No touchy
