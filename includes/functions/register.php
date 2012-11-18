@@ -39,8 +39,8 @@
 				}
 				//!@#$%^&*()_-=+{}[]'.;:?";
 				//"`~!@#$%^&*()-_=+[]{};:'\\|/,.<>/?"
-				$password_strength_symbols="[\`\~\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\{\]\}\;\:\"\\\|\,\<\.\>\/\?]"; // And lastly symbols
-				if(strpbrk($password, $password_strength_symbols)) { // check if $password contains symbols
+				$password_strength_symbols="/[`~!@#$%^&*()-_=+\[{\]};:\\|,<.>\/?]/"; // And lastly symbols
+				if(preg_match($password_strength_symbols, $password)) { // check if $password contains symbols
 					$password_strength++;
 					if($_['debug']===true) {echo PHP_EOL.'<br/>Symbols present in password.';}
 				}
