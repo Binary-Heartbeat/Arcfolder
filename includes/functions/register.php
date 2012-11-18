@@ -17,28 +17,35 @@
 		}
 		public static function validate_password ($_, $localization, $password, $password_confirm) {
 			if($password === $password_confirm) { // check if $password and $password_confirm are EXACT matches
-				if(strlen($password) < 8) // Hmm, better make sure the password is an acceptable length
-				{
+				if(strlen($password) < 8) { // Hmm, better make sure the password is an acceptable length
 					echo '<br/>'.$localization['reg_err_password_short'].PHP_EOL;
 					return false;
-				} elseif(strlen($password) > 64) {
-					// XXX: Password too long
+				} elseif(strlen($password) > 64) { // Lets make sure they don't exceed the length set for the database
+					echo '<br/>'.$localization['reg_err_password_long'].PHP_EOL;
+					return false;
 				}
-				$password_strength_letters='abcdefghijklmnopqrstuvwxyz';
-				$password_strength_letters=$password_strength_letters.strtoupper($password_strength_letters);
-				if(strpbrk($password, $password_strength_letters)) { // check if $password contains letters
+				$password_strength=0;
+
+				$password_strength_letters='/[a-zA-Z]/'; // As silly as it seems, lets define the alphabet
+				if(preg_match($password_strength_letters, $password)) { // check if $password contains letters
 					$password_strength++;
+					if($_['debug']===true) {echo PHP_EOL.'<br/>Letters present in password.';}
 				}
-				$password_strength_numbers='0123456789';
-				if(strpbrk($password, $password_strength_numbers)) { // check if $password contains numbers
+
+				$password_strength_numbers='/[0123456789]/'; // Define numbers...
+				if(preg_match($password_strength_numbers, $password)) { // check if $password contains numbers
 					$password_strength++;
+					if($_['debug']===true) {echo PHP_EOL.'<br/>Numbers present in password.';}
 				}
-				$password_strength_symbols="!@#$%^&*()_-=+{}[]'.;:?";
-				//$password_strength_symbols="`~!@#$%^&*()-_=+[]{};:'\\|/,.<>/?";
+				//!@#$%^&*()_-=+{}[]'.;:?";
+				//"`~!@#$%^&*()-_=+[]{};:'\\|/,.<>/?"
+				$password_strength_symbols="[\`\~\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\{\]\}\;\:\"\\\|\,\<\.\>\/\?]"; // And lastly symbols
 				if(strpbrk($password, $password_strength_symbols)) { // check if $password contains symbols
 					$password_strength++;
+					if($_['debug']===true) {echo PHP_EOL.'<br/>Symbols present in password.';}
 				}
-				if($password_strength < 2) {
+				if($_['debug']===true) {echo PHP_EOL.'<br/> $password_strength = '.$password_strength;}
+				if($password_strength < 2) { // Make sure that the password contains at least two types of characters
 					echo '<br/>'.$localization['reg_err_password_insecure'].PHP_EOL;
 					return false;
 				}

@@ -14,32 +14,19 @@ if (isset($_POST['trigger']) and $_POST['trigger'] == true) { // $trigger is set
 		register::validate_password($_, $localization, $password, $password_confirm) and
 		register::validate_email($_, $localization, $email, $email_confirm))
 	{
-		/*
-		function createSalt()
-		{
-			$string = md5(uniqid(rand(), true));
-			return substr($string, 0, 3);
-		}
-		$salt = createSalt(); /// Lets create the unique 'salt' that will be used for hashing this users password
-		$hash = hash('sha256', $password); // Fortunately, this is not the drug. Otherwise I'd be in jail and not coding this
-		$hash = hash('sha256', $salt . $hash); // Hell, why not, lets hash the hash, then salt it too
-		*/
-		$password = PassHash::hash($password);
+		$hash = PassHash::hash($password);
 		$nicename = strtolower($username);
 		$ip=$_SERVER['REMOTE_ADDR'];
 
 		$con=_db_connect($_); // merge with prepare() line
-		$query="INSERT INTO ".$_['table_prefix']."users(UserName,UserNiceName,UserPassword,UserIP) VALUES(?,?,?,?);";
-		//$query="INSERT INTO ".$_['table_prefix']."users(UserName,UserNiceName,UserPassword,UserSalt,UserIP) VALUES(?,?,?,?,?);";
+		$query="INSERT INTO ".$_['table_prefix']."users(UserName,UserNiceName,UserPassword,UserIP,UserEmail) VALUES(?,?,?,?,?);";
 		$statement=$con->prepare($query);
-		$statement->execute(array($username,$nicename,$hash,$ip));
-		//$statement->execute(array($username,$nicename,$hash,$salt,$ip));
+		$statement->execute(array($username,$nicename,$hash,$ip,$email));
 
 		echo '<br/>'.$localization['reg_success_1'].'<a href="login.php">'.$localization['reg_success_2'].'</a>'.$localization['reg_success_3'].PHP_EOL;
 		die();
 	}
-// END Registration //
-} //else {
+}
 	echo '<br/>'.PHP_EOL.
 	'<form name="register" action="register.php" method="post">'.PHP_EOL.
 	'	'.$localization['reg_form_username'].': <input type="text" name="username" maxlength="20" /><br/>'.PHP_EOL.
