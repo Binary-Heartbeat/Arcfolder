@@ -26,7 +26,6 @@ function _db_rowExists($_, $table, $column, $value) {
 	$statement = $con->prepare($query);
 	$statement->execute();
 	$count = $statement->fetchColumn(); // investigate switching to rowCount instead of fetchColumn
-	echo $count;
 	if ($count !== '1') {
 		$count = $statement->closeCursor();
 		return FALSE;

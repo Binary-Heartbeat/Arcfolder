@@ -12,8 +12,9 @@
 	$localization["reg_err_username_long"] = "The provided username is too long. It must be between 3 and 20 characters.";
 	$localization["reg_err_username_short"] = "The provided username is too short. It must be between 3 and 20 characters.";
 	$localization["reg_err_password_short"] = "Password is too short.";
+	$localization["reg_err_password_long"] = "Password is too long.";
 	$localization["reg_err_password_mismatch"] = "The provided passwords did not match.";
-	$localization["reg_err_password_insecure"] = "Contain characters from at least two of these categories: letters, numbers, symbols.";
+	$localization["reg_err_password_insecure"] = "Password must contain characters from at least two of these categories: letters, numbers, symbols.";
 	$localization["reg_err_email_taken"] = "This email address is already in use.";
 	$localization["reg_err_email_invalid"] = "This email address is not valid.";
 	$localization["reg_err_email_mismatch"] = "The provided emails did not match.";

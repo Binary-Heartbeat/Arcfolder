@@ -25,7 +25,7 @@ $_['localization'] = 'en-uk';
 
 //	Turns debug mode within Arcfolder on/off. Currently not working.
 //	Can be true or false
-$_['debug'] = false;
+$_['debug'] = true;
 
 // Name of the site used in page titles
 $_['site_name'] = 'Arcfolder Official Addons Repository';
