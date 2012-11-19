@@ -36,8 +36,8 @@ $_['web_root'] = '/public/arcfolder/';
 // Location of the Arcfolder installation on the filesystem
 $_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
 
-$_['cookie_username_title'] = 'herpaderpa1';
-$_['cookie_token_title'] = 'herpaderpa2';
+$_['cookie_username_title'] = 'af_user'; // change these to invalidate all previously set cookies
+$_['cookie_token_title'] = 'af_token'; // change these to invalidate all previously set cookies
 
 
 require_once($_['fs_root'].'settings.php'); // No touchy

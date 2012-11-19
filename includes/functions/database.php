@@ -34,3 +34,12 @@ function _db_rowExists($_, $table, $column, $value) {
 		return TRUE;
 	}
 }
+
+function _db_updateRow($_, $table, $column, $value, $findColumn, $findValue) {
+	$con = _db_connect($_);
+	$query = "UPDATE ".$_['table_prefix'].$table." SET ".$column."='".$value."' WHERE `".$findColumn."` = '".$findValue."';";
+
+	$statement = $con->prepare($query);
+	$statement->execute();
+	$statement->closeCursor();
+}
