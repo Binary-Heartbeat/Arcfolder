@@ -14,17 +14,10 @@ $_['db_name'] = 'arcfolder';
 //	The prefix to use
 $_['table_prefix'] = 'af_';
 
-//	Database Charset to use in creating database tables.
-$_['db_charset'] = 'utf8';
-
-//	The Database Collate type. Don't change this if in doubt.
-$_['db_collate'] = '';
-
 // Localization file to use
 $_['localization'] = 'en-uk';
 
-//	Turns debug mode within Arcfolder on/off. Currently not working.
-//	Can be true or false
+//	Turns debug mode within Arcfolder on/off. Can be true or false.
 $_['debug'] = true;
 
 // Name of the site used in page titles
@@ -36,8 +29,9 @@ $_['web_root'] = '/public/arcfolder/';
 // Location of the Arcfolder installation on the filesystem
 $_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
 
-$_['cookie_username_title'] = 'af_user'; // change these to invalidate all previously set cookies
-$_['cookie_token_title'] = 'af_token'; // change these to invalidate all previously set cookies
+$_['cookie_name'] = 'af'; // change these to invalidate all previously set cookies
+
+$_['cookie_expiry'] = '900'; // how many seconds cookies are valid
 
 
 require_once($_['fs_root'].'settings.php'); // No touchy

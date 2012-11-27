@@ -1,18 +1,16 @@
 <?php
-require_once($_['fs_root'].'/includes/localizations/'.$_['localization'].'.php');
-require_once($_['fs_root'].'includes/functions/auth.php');
+echo '<br/>'.PHP_EOL;
+echo '<a href="'.$_['web_root'].'manager/register.php">register</a>'.PHP_EOL;
+echo '<a href="'.$_['web_root'].'manager/login.php">login</a>'.PHP_EOL;
+echo '<a href="'.$_['web_root'].'manager/logout.php">logout</a>'.PHP_EOL;
+echo '<a href="'.$_['web_root'].'sandbox.php">sandbox</a>'.PHP_EOL;
+echo '<br/>'.PHP_EOL;
+
+require_once($_['fs_root'].'includes/localizations/'.$_['localization'].'.php');
 require_once($_['fs_root'].'includes/functions/database.php');
-$_['con'] = 'mysql:host='.$_['db_host'].';dbname='.$_['db_name'].';';
+require_once($_['fs_root'].'includes/functions/common.php');
 
+$authpath=$_['fs_root'].'../../Auth/Source/';
+require_once($authpath.'bridge.php');
 
-// Salting time! http://stackoverflow.com/questions/5032341/where-is-the-best-place-to-store-the-password-salt-for-the-website
-if($_['salt']=getenv('SALT')) {
-	if($_['debug']===true){ echo '<br/>Debug: $salt obtained from .htaccess'.PHP_EOL; }
-} else {
-	if(file_put_contents($_['fs_root'].'.htaccess', 'SetEnv SALT '.salt())) {
-		if($_['debug']===true) { echo '<br/>Debug: $salt written to .htaccess'.PHP_EOL; }
-	} else {
-		echo "CRITICAL ERROR, Environmental Variable 'salt' missing from .htaccess, unable to write file.";
-		die();
-	}
-}
+//require_once($_['fs_root'].'includes/dBug.php');
