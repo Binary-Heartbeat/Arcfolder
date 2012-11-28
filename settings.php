@@ -13,5 +13,5 @@ require_once($_['fs_root'].'includes/localizations/'.$_['localization'].'.php');
 require_once($_['fs_root'].'includes/functions/database.php');
 require_once($_['fs_root'].'includes/functions/common.php');
 
-$authpath=$_['fs_root'].'../../Auth/Source/';
+$authpath='C:/Users/jekotia/DropBox/Binary Heartbeat/Projects/Auth/Source/';
 require_once($authpath.'bridge.php');

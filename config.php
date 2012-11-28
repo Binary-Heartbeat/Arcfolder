@@ -24,7 +24,7 @@ $_['site_name'] = 'Arcfolder Official Addons Repository';
 $_['web_root'] = '/public/arcfolder/';
 
 // Location of the Arcfolder installation on the filesystem
-$_['fs_root'] = 'C:/xampp/htdocs/public/arcfolder/';
+$_['fs_root'] = 'C:/Users/jekotia/DropBox/Binary Heartbeat/Projects/Arcfolder/Source/';
 
 // Location of Arcfolder's 'public' folder on the filesystem, relative to $_['fs_root']. Do not include leading slash. Include trailing slash.
 $_['public_fs'] = 'public/';
