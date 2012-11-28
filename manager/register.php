@@ -13,7 +13,7 @@
 	echo '<br/>'.PHP_EOL.
 	'<form name="register" action="register.php" method="post">'.PHP_EOL.
 	'	'.$authLoc['reg_form_username'].': <input type="text" name="username" maxlength="20" /><br/>'.PHP_EOL.
-	'	'.$authLoc['reg_form_password'].': <input type="password" name="password" /><br/>'.PHP_EOL.
+	'	'.$authLoc['reg_form_password'].': <input type="password" name="password" maxlength="'.$auth['validate_password']['max_length']	.'"/><br/>'.PHP_EOL.
 	'	'.$authLoc['reg_form_password_again'].': <input type="password" name="password_confirm" /><br/>'.PHP_EOL.
 	'	'.$authLoc['reg_form_email'].': <input type="text" name="email" /><br/>'.PHP_EOL.
 	'	'.$authLoc['reg_form_email_again'].': <input type="text" name="email_confirm" /><br/>'.PHP_EOL.

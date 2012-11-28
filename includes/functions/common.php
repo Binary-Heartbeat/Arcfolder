@@ -1,6 +1,6 @@
 <?php
 	function _debug($_, $message) {
-		if($_['debug']===true) {echo '<br/> Debug: '.$message.PHP_EOL;}
+		if($_['debug']) {echo '<br/> Debug: '.$message.PHP_EOL;}
 	}
 
 	function _error($_, $level, $message) {
