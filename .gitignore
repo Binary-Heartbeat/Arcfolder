@@ -1,5 +1,6 @@
-salt.php
-sandbox.php
-install/.htaccess
 auth/
+common/
 install/
+
+config.php
+sandbox.php
