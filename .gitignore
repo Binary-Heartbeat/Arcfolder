@@ -1,4 +1,6 @@
 auth/
+auth
 common/
+common
 
 config.php
