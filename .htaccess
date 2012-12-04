@@ -9,5 +9,5 @@ Allow from 127.0.0.1
 
 # Rewrite engine ftw?
 RewriteEngine On
-RewriteBase /public/arcfolder/
+# RewriteBase /public/arcfolder/ # Not necessary. Yet. Keeping it for later since mod_rewrite is a bitch
 RewriteRule ^([^/\.]+)$ index.php?p=$1 [L]
