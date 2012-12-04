@@ -82,10 +82,7 @@
 
 		<div class="container">
 
-			<?php if($page=='home') {
-				require_once($_['fs_root'].'includes/pages/home.php');
-			}
-			?>
+			<?php require_once($_['fs_root'].'includes/pages/'.$page.'.php'); ?>
 
 			<hr>
 
