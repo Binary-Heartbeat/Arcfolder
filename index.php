@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once('config.php');
 	if(isset($_GET['p'])) {
 		$page=$_GET['p'];
@@ -7,7 +8,7 @@
 			$page='404';
 		}
 	} else {
-		$page='home';
+		header('Location: home');
 	}
 ?>
 
@@ -22,12 +23,7 @@
 
 		<!-- Styles -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-		<style type="text/css">
-			body {
-				padding-top: 60px;
-				padding-bottom: 40px;
-			}
-		</style>
+		<link href="assets/css/bootstrap-additional.css" rel="stylesheet">
 		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -37,6 +33,10 @@
 
 		<!-- Fav and touch icons -->
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 	</head>
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +47,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#">Arcfolder</a>
+					<a class="brand" href="" onclick="return false;">Arcfolder</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li <?php if($page=='home') {echo 'class="active"';} ?>>
@@ -69,9 +69,19 @@
 								<a href="<?php if($page=='melder') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'melder';} ?>">Melder</a>
 							</li>
 						</ul>
-						<form class="navbar-form pull-right" name="login" action="<?php tpl::wr($_); ?>login" method="post">
-							<input class="span2" type="text" placeholder="Email">
-							<input class="span2" type="password" placeholder="Password">
+						<form class="navbar-form pull-right" name="login" action="login" method="post">
+							<input
+									type="text"
+									name="username"
+									class="span2"
+									placeholder="<?php echo$authLoc['form_username']; ?>"
+							/>
+							<input
+									type="password"
+									name="password"
+									class="span2"
+									placeholder="<?php echo$authLoc['form_password']; ?>"
+							/>
 							<button type="submit" class="btn"><?php echo $authLoc['login_form_submit']; ?></button>
 							<input name="trigger_login" type="hidden" value="true">
 						</form>

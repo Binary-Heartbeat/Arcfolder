@@ -7,3 +7,5 @@ require_once($_['fs_root'].'includes/localizations/'.$_['localization'].'.php');
 
 require_once($_['fs_root'].'common/init.php');
 require_once($_['fs_root'].'auth/init.php');
+
+require_once($_['fs_root'].'includes/dBug.php');
