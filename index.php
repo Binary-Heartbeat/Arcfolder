@@ -5,7 +5,10 @@
 		$page=$_GET['p'];
 		$pages = array('register','login','logout','home','addons','authors','help','about','melder');
 		if(! in_array($page, $pages)) {
-			$page='404';
+			$page = '404';
+			$error = true;
+		} elseif($page == 'register') {
+			$check = register::invoke($_, $auth, $authLoc);
 		}
 	} else {
 		header('Location: home');
@@ -69,7 +72,7 @@
 								<a href="<?php if($page=='melder') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'melder';} ?>">Melder</a>
 							</li>
 						</ul>
-						<form class="navbar-form pull-right" name="login" action="login" method="post">
+						<!--<form class="navbar-form pull-right" name="login" action="login" method="post">
 							<input
 									type="text"
 									name="username"
@@ -84,7 +87,7 @@
 							/>
 							<button type="submit" class="btn"><?php echo $authLoc['login_form_submit']; ?></button>
 							<input name="trigger_login" type="hidden" value="true">
-						</form>
+						</form>-->
 					</div><!--/.nav-collapse -->
 				</div>
 			</div>

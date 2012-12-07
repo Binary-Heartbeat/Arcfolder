@@ -5,7 +5,10 @@
 				<p>Arcfolder is an open-source repository for Firefall addons and addon libraries.
 				<br/>
 				This software is still a work in progress.</p>
-				<p><a class="btn btn-primary btn-large">Browse addons &raquo;</a> <a class="btn btn-info btn-large" href="register" >Register an account &raquo;</a></p>
+				<p>
+					<a class="btn btn-primary btn-large" href="login" >Login &raquo;</a>
+					<a class="btn btn-info btn-large" href="register" >Register an account &raquo;</a>
+				</p>
 			</div>
 
 			<!-- Example row of columns -->

@@ -9,7 +9,7 @@
 					}
 					$status = null;
 				?>
-				<h2 class="form-signin-heading"><?php echo $authLoc['form_login']; ?></h2>
+				<h2 class="form-auth-heading"><?php echo $authLoc['form_login']; ?></h2>
 
 				<?php login::errors($status, $authLoc, $auth); ?>
 
