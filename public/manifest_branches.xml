@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<branches>
+    <branch name="stable">
+        <type>
+            <name form="singular">addon</name>
+            <name form="plural">addons</name>
+        </type>
+        <type>
+            <name form="singular">library</name>
+            <name form="plural">libraries</name>
+        </type>
+    </branch>
+
+    <branch name="dev">
+        <type>
+            <name form="singular">addon</name>
+            <name form="plural">addons</name>
+        </type>
+        <type>
+            <name form="singular">library</name>
+            <name form="plural">libraries</name>
+        </type>
+    </branch>
+</branches>
