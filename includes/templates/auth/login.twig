@@ -1,0 +1,86 @@
+        {#- Indentation to match parent template starts here #}
+        <!-- Begin auth/login.twig -->
+            <form class="form-horizontal well form-signin" name="login" action="login" method="post">
+                <legend>
+                    <h2 class="form-auth-heading"> {{- authLoc['form_login'] -}} </h2>
+                </legend>
+
+                {% if showValidRegister == true %}
+                    <h5> {{- authLoc['reg_success'] -}} </h5>
+                {% endif %}
+
+{% if check['trigger'] == true %}
+    {% if check['username'] == false %}
+        {{ authLoc['login_err_user'] }}
+    {% elseif check['password'] == false %}
+        {{ authLoc['login_err_password'] }}
+    {% endif %}
+{% endif %}
+
+
+                {% if username['valid'] is defined %}
+                    {% if  username['valid'] == true %}
+                        <div class="control-group success">
+                    {% elseif username['valid'] == false %}
+                        <div class="control-group error">
+                    {% endif %}
+                {% else %}
+                    <div class="control-group">
+                {% endif %}
+                    <label class="control-label" for="username"> {{- authLoc['form_username'] -}} </label>
+                    <div class="controls">
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            class="input-xlarge"
+                            maxlength=" {{- username['maxlength'] -}} "
+                            {% if username['value'] is defined -%}
+                                value=" {{- username['value'] -}} "
+                            {% endif %}
+                        />
+                    </div>
+                </div>
+
+                {% if password['valid'] is defined %}
+                    {% if  password['valid'] == true %}
+                        <div class="control-group success">
+                    {% elseif password['valid'] == false %}
+                        <div class="control-group error">
+                    {% endif %}
+                {% else %}
+                    <div class="control-group">
+                {% endif %}
+                    <label class="control-label" for="password"> {{- authLoc['form_password'] -}} </label>
+                    <div class="controls">
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="input-xlarge"
+                            maxlength=" {{- password['maxlength'] -}} "
+                        />
+                    </div>
+                </div>
+
+                {% if check['force_captcha'] == true %} {# TODO: implement a show_captcha variable that is used to check if a captcha should be shown. The value of this variable is set based on the page being rendered, and in the case of login, if it's time to force the captcha #}
+                    <div class="control-group">
+                        <label class="control-label"> {{- authLoc['form_captcha'] -}} </label>
+                        <div class="controls">
+                            {% autoescape false %}
+                                {{ captcha['render'] }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        {{- authLoc['login_form_submit'] -}}
+                    </button>
+                </div>
+                <input name="trigger_login" type="hidden" value="true">
+                <p>Forgot your password? Click <a href=" {{- webRoot -}} auth/recovery">here</a> to begin account recovery.</p>
+                <p>If you do not have an Arcfolder account, click <a href=" {{- webRoot -}} auth/register">here</a> to register.</p>
+            </form>
+        <!-- End auth/login.twig -->

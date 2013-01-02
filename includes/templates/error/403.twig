@@ -1,0 +1,23 @@
+        {#- Indentation to match parent template starts here #}
+        <!-- Begin error/403.twig -->
+            <h1>Error 403, Forbidden</h1>
+            <p>If you are seeing this page, it is likely due to one of the following:</p>
+            <ul>
+                <li>
+                    You are attempting to access a restricted page that requires authentication
+                </li>
+                <li>
+                    You have failed too many login attempts
+                </li>
+                <li>
+                    The local Accord Watchtower has flagged you as Chosen
+                </li>
+            </ul>
+            <p>If you believe this is in error, contact an administrator at <?php echo $_['admin_email']; ?>. If you wish to lodge a complaint, hold your position while a 'feedback' Thumper is deployed on your location.</p>
+
+
+            {#
+                1.) Too many failed login attempts, so you are likely brute forcing through logins.<br />
+                2.) You have been accessing an authorized user account login through a stolen or hijacked session.
+            #}
+        <!-- End error/403.twig -->
