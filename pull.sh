@@ -17,7 +17,7 @@ else
 fi
 
 
-if [ ! -d ./include/lib/common/ ]; then
+if [ ! -d ./includes/lib/common/ ]; then
     git clone git://github.com/Binary-Heartbeat/Common.git ./includes/lib/common/
 else
     cd ./includes/lib/common/ && git reset --hard && git clean -f -d && git pull
