@@ -17,9 +17,8 @@
                 if (!in_array($page['page'], $page['pages'])) {
                     $page['page'] = '404';
                     $page['type'] = 'error';
-
-                } elseif ($page['page'] == 'auth' and $page['action'] !== null) {
-                    if (!in_array($page['action'], $page['actions'])) {
+                } elseif ($page['page'] == 'auth') {
+                    if (!in_array($page['action'], $page['actions']) or $page['action'] == null) {
                         $page['type'] = 'error';
                         $page['page'] = '404';
                     } else {
