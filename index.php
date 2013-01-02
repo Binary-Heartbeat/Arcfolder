@@ -121,7 +121,7 @@
         die();
     }
 
-    require_once $_['fs_root'].'includes/lib/twig/Autoloader.php';
+    require_once $_['fs_root'].'includes/lib/Twig/Autoloader.php';
     Twig_Autoloader::register();
 
     $loader = new Twig_Loader_Filesystem($_['fs_root'].'includes/templates/');
