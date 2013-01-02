@@ -1,115 +1,130 @@
 <?php
-	session_start();
-	require_once('config.php');
-	if(isset($_GET['p'])) {
-		$page=$_GET['p'];
-		$pages = array('register','login','logout','home','addons','authors','help','about','melder');
-		if(! in_array($page, $pages)) {
-			$page = '404';
-			$error = true;
-		} elseif($page == 'register') {
-			$check = register::invoke($_, $auth, $authLoc);
-		}
-	} else {
-		header('Location: home');
-	}
-?>
+    session_start();
+    require_once 'config.php';
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Arcfolder Firefall Addon Repository - Home</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
+    $page = page::invoke($_, $auth, $authLoc);
+    if ($page['type'] == 'auth' and $page['action'] !== null) {
+        if ($page['action'] == 'register') {
+            $check = register::invoke($_, $auth, $authLoc);
+        } elseif ($page['action'] == 'login') {
+            $check = login::invoke($_, $auth, $authLoc);
+        } elseif ($page['action'] == 'logout') {
+            $check = logout::invoke($_, $auth, $authLoc);
+        } elseif ($page['action'] == 'activate') {
+            $check = activate::invoke($_, $auth, $authLoc);
+        }
+    }
 
-		<!-- Styles -->
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-		<link href="assets/css/bootstrap-additional.css" rel="stylesheet">
-		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    $twigRender = array(
+        'siteName'   => $_['site_name'],
+        'webRoot'    => $_['web_root'],
+        'pageType'   => $page['type'],
+        'page'       => $page['page'],
+        'action'     => $page['action'],
+        'navigation' => array(
+            array(
+                'name' => 'Home',
+                'href' => 'home'
+            ),
+            array(
+                'name' => 'Addons',
+                'href' => 'addons'
+            ),
+            array(
+                'name' => 'Authors',
+                'href' => 'authors'
+            ),
+            array(
+                'name' => 'Help',
+                'href' => 'help'
+            ),
+            array(
+                'name' => 'About',
+                'href' => 'about'
+            ),
+            array(
+                'name' => 'Melder',
+                'href' => 'melder'
+            )
+        )
+    );
 
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+    if ($page['type'] !== 'error') { // Skip a bunch of would-be-wasteful processing if an error page is being returned
 
-		<!-- Fav and touch icons -->
-		<link rel="shortcut icon" href="assets/img/favicon.ico">
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-	</head>
-	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<a class="brand" href="" onclick="return false;">Arcfolder</a>
-					<div class="nav-collapse collapse">
-						<ul class="nav">
-							<li <?php if($page=='home') {echo 'class="active"';} ?>>
-								<a href="<?php if($page=='home') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'home';} ?>">Home</a>
-							</li>
-							<li <?php if($page=='addons') {echo 'class="active"';} ?> >
-								<a href="<?php if($page=='addons') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'addons';} ?>">Addons</a>
-							</li>
-							<li <?php if($page=='authors') {echo 'class="active"';} ?> >
-								<a href="<?php if($page=='authors') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'authors';} ?>">Authors</a>
-							</li>
-							<li <?php if($page=='help') {echo 'class="active"';} ?> >
-								<a href="<?php if($page=='help') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'help';} ?>">Help</a>
-							</li>
-							<li <?php if($page=='about') {echo 'class="active"';} ?> >
-								<a href="<?php if($page=='about') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'about';} ?>">About</a>
-							</li>
-							<li <?php if($page=='melder') {echo 'class="active"';} ?> >
-								<a href="<?php if($page=='melder') {echo '#" onclick="return false;';} else {echo tpl::wr($_).'melder';} ?>">Melder</a>
-							</li>
-						</ul>
-						<!--<form class="navbar-form pull-right" name="login" action="login" method="post">
-							<input
-									type="text"
-									name="username"
-									class="span2"
-									placeholder="<?php echo$authLoc['form_username']; ?>"
-							/>
-							<input
-									type="password"
-									name="password"
-									class="span2"
-									placeholder="<?php echo$authLoc['form_password']; ?>"
-							/>
-							<button type="submit" class="btn"><?php echo $authLoc['login_form_submit']; ?></button>
-							<input name="trigger_login" type="hidden" value="true">
-						</form>-->
-					</div><!--/.nav-collapse -->
-				</div>
-			</div>
-		</div>
+        if ($page['type'] == 'auth' and $page['action'] !== null) { // Check if the page/action pairing is valid for auth pages
 
-		<div class="container">
+            $twigRender['authLoc'] = $authLoc;
 
-			<?php require_once($_['fs_root'].'includes/pages/'.$page.'.php'); ?>
+            if ($page['action'] == 'login' or $page['action'] == 'register'){
+                $twigRender['check'] = $check;
 
-			<hr>
+                $twigRender['username']['maxlength'] = $auth['validate_username']['max_length'];
+                $twigRender['password']['maxlength'] = $auth['validate_password']['max_length'];
 
-			<footer>
-				<p>A <a href="http://www.binaryheartbeat.net/">Binary Heartbeat</a> production.
-				Themed with <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>.</p>
-			</footer>
+                if (isset($_POST['trigger_login']) and $_POST['trigger_login']) {
+                    $trigger_login = true;
+                } else {
+                    $trigger_login = false;
+                }
 
-		</div> <!-- /container -->
+                if (isset($_POST['trigger_register']) and $_POST['trigger_register']) {
+                    $trigger_register = true;
+                    $twigRender['email']['valid'] = $check['email']['valid'];
+                    $twigRender['email']['value'] = $_POST['email'];
+                } else {
+                    $trigger_register = false;
+                }
 
-		<!-- Javascript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="assets/js/jquery-1.8.2.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-	</body>
-</html>
+                if ($trigger_login or $trigger_register) {
+                    $twigRender['username']['value'] = $_POST['username'];
+                    $twigRender['username']['valid'] = $check['username']['valid'];
+
+                    $twigRender['password']['valid'] = $check['password']['valid'];
+                }
+            }
+
+            if ($page['action'] == 'login') {
+                if (isset($_SESSION['show_valid_register']) and $_SESSION['show_valid_register']) {
+                    $twigRender['showValidRegister'] = true;
+                    unset($_SESSION['show_valid_register']);
+                }
+            }
+
+            // TODO: implement a show_captcha variable that is used to check if a captcha should be shown. The value of this variable is set based on the page being rendered, and in the case of login, if it's time to force the captcha
+            if (
+                $check['captcha']['force'] or
+                in_array(
+                    $page['action'], array(
+                        'register',
+                        'activate',
+                        'recover'
+                    )
+                ) /*or
+                in_array(
+                    $page['page'], array(
+                        ''
+                    )
+                )*/
+            ) {
+                $twigRender['captcha']['show']   = true;
+                $twigRender['captcha']['render'] = auth::getCaptcha($auth, $check, $page);
+            }
+
+        }
+    }
+
+    if (core::debug($_, '$twigRender contents:')) {
+        core::debug($_, $twigRender);
+    }
+
+    if ($_['debug']) { // If we're debugging the PHP, cut it short since the template is unnecessary
+        die();
+    }
+
+    require_once $_['fs_root'].'includes/lib/twig/Autoloader.php';
+    Twig_Autoloader::register();
+
+    $loader = new Twig_Loader_Filesystem($_['fs_root'].'includes/templates/');
+    $twig = new Twig_Environment($loader);
+    $template = $twig->loadTemplate('framework/base.twig');
+    echo $twig->render('framework/base.twig', $twigRender);

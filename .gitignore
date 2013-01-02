@@ -1,6 +1,7 @@
-auth/
-auth
-common/
-common
+cache/*
+includes/lib/auth/
+includes/lib/auth
+includes/lib/common/
+includes/lib/common
 
 config.php

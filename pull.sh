@@ -4,19 +4,21 @@
 # Don't leave this in a production Arcfolder installation, it could be a security risk.
 
 if [ ! -d ./arcfolder/ ]; then
-	git clone git://github.com/Binary-Heartbeat/Arcfolder.git ./arcfolder/ && cd ./arcfolder/
+    git clone git://github.com/Binary-Heartbeat/Arcfolder.git ./arcfolder/ && cd ./arcfolder/
 else
-	cd ./arcfolder/ && git reset --hard && git clean -f -d && git pull
+    cd ./arcfolder/ && git reset --hard && git clean -f -d && git pull
 fi
 
-if [ ! -d ./auth/ ]; then
-	git clone git://github.com/Binary-Heartbeat/Auth.git ./auth/
+
+if [ ! -d ./includes/lib/auth/ ]; then
+    git clone git://github.com/Binary-Heartbeat/Auth.git ./includes/lib/auth/
 else
-	cd ./auth/ && git reset --hard && git clean -f -d && git pull && cd ../
+    cd ./includes/lib/auth/ && git reset --hard && git clean -f -d && git pull && cd ../../../
 fi
 
-if [ ! -d ./common/ ]; then
-	git clone git://github.com/Binary-Heartbeat/Common.git ./common/
+
+if [ ! -d ./include/lib/common/ ]; then
+    git clone git://github.com/Binary-Heartbeat/Common.git ./includes/lib/common/
 else
-	cd ./common/ && git reset --hard && git clean -f -d && git pull
+    cd ./includes/lib/common/ && git reset --hard && git clean -f -d && git pull
 fi

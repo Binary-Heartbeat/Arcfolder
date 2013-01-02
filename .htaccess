@@ -1,13 +1,22 @@
 # Begin Arcfolder Entries #
 
 # These entries are for security purposes. It is not recommended to change them.
+
+
 <filesMatch ^(config.php|settings.php)$>
 Order Deny,Allow
 Deny from all
 Allow from 127.0.0.1
 </filesMatch>
 
+# TODO: Update rewrite rules for entirely index.php based approach.
+
 # Rewrite engine ftw?
 RewriteEngine On
-# RewriteBase /public/arcfolder/ # Not necessary. Yet. Keeping it for later since mod_rewrite is a bitch
-RewriteRule ^([^/\.]+)$ index.php?p=$1 [L]
+#RewriteBase /public/arcfolder/
+RewriteRule ^panel/([^/]*)/([^/]*)$ includes/lib/auth/admin/index.php?page=$1&action=$2 [L]
+RewriteRule ^panel/([^/]*)$ includes/lib/auth/admin/index.php?page=$1 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)$ index.php?page=$1&action=$2 [L]
+RewriteRule ^([^/\.]+)$ index.php?page=$1 [L]
+
+# End Arcfolder Entries #
