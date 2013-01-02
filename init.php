@@ -11,7 +11,6 @@ $_ = core::config($_); // Fill config array ($_) from database
 require_once($_['fs_root'].'includes/lib/auth/init.php');  // Include Binary Heartbeat's 'auth' PHP lib
 
 // Include Arcfolder PHP components
-require_once($_['fs_root'].'includes/classes/form.php');
 require_once($_['fs_root'].'includes/classes/page.php');
 require_once($_['fs_root'].'includes/localizations/'.$_['localization'].'.php');
 
