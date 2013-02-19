@@ -2,6 +2,8 @@
     session_start();
     require_once 'config.php';
 
+    $user = auth::verify($_);
+
     $page = page::invoke($_, $auth, $authLoc);
     if ($page['type'] == 'auth' and $page['action'] !== null) {
         if ($page['action'] == 'register') {
@@ -9,7 +11,7 @@
         } elseif ($page['action'] == 'login') {
             $check = login::invoke($_, $auth, $authLoc);
         } elseif ($page['action'] == 'logout') {
-            $check = logout::invoke($_, $auth, $authLoc);
+            $check = logout::invoke($_, $user);
         } elseif ($page['action'] == 'activate') {
             $check = activate::invoke($_, $auth, $authLoc);
         }
@@ -46,7 +48,8 @@
                 'name' => 'Melder',
                 'href' => 'melder'
             )
-        )
+        ),
+        'user'         => $user
     );
 
     if ($page['type'] !== 'error') { // Skip a bunch of would-be-wasteful processing if an error page is being returned
@@ -91,23 +94,28 @@
             }
 
             // TODO: implement a show_captcha variable that is used to check if a captcha should be shown. The value of this variable is set based on the page being rendered, and in the case of login, if it's time to force the captcha
-            if (
-                $check['captcha']['force'] or
-                in_array(
-                    $page['action'], array(
-                        'register',
-                        'activate',
-                        'recover'
+            if ($auth['recaptcha']['enable'])
+            {
+                if (
+                    isset($check['captcha']['force']) and $check['captcha']['force'] or
+                    in_array(
+                        $page['action'], array(
+                            'register',
+                            'activate',
+                            'recover'
+                        )
+                    ) or
+                    in_array(
+                        $page['page'], array(
+                            ''
+                        )
                     )
-                ) /*or
-                in_array(
-                    $page['page'], array(
-                        ''
-                    )
-                )*/
-            ) {
-                $twigRender['captcha']['show']   = true;
-                $twigRender['captcha']['render'] = auth::getCaptcha($auth, $check, $page);
+                ) {
+                    $twigRender['captcha']['show']   = true;
+                    $twigRender['captcha']['render'] = auth::getCaptcha($auth, $check, $page);
+                }
+            } else {
+                $twigRender['captcha']['show'] = false;
             }
 
         }
