@@ -9,8 +9,6 @@ Deny from all
 Allow from 127.0.0.1
 </filesMatch>
 
-# TODO: Update rewrite rules for entirely index.php based approach.
-
 # Rewrite engine ftw?
 RewriteEngine On
 #RewriteBase /public/arcfolder/
