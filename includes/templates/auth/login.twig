@@ -1,5 +1,13 @@
         {#- Indentation to match parent template starts here #}
         <!-- Begin auth/login.twig -->
+            {% if check['login']['valid'] %}
+                <META HTTP-EQUIV="refresh" CONTENT="5;URL=../home">
+                Login successful. You will automatically redirected. Click <a href="../home">here</a> to continue without waiting.
+            {% elseif user['valid'] %}
+                .already logged in
+                <br/>
+            {% else %}
+
             <form class="form-horizontal well form-signin" name="login" action="login" method="post">
                 <legend>
                     <h2 class="form-auth-heading"> {{- authLoc['form_login'] -}} </h2>
@@ -9,14 +17,13 @@
                     <h5> {{- authLoc['reg_success'] -}} </h5>
                 {% endif %}
 
-{% if check['trigger'] == true %}
-    {% if check['username'] == false %}
-        {{ authLoc['login_err_user'] }}
-    {% elseif check['password'] == false %}
-        {{ authLoc['login_err_password'] }}
-    {% endif %}
-{% endif %}
-
+                {% if check['trigger'] == true %}
+                    {% if check['username'] == false %}
+                        {{ authLoc['login_err_user'] }}
+                    {% elseif check['password'] == false %}
+                        {{ authLoc['login_err_password'] }}
+                    {% endif %}
+                {% endif %}
 
                 {% if username['valid'] is defined %}
                     {% if  username['valid'] == true %}
@@ -83,4 +90,5 @@
                 <p>Forgot your password? Click <a href=" {{- webRoot -}} auth/recovery">here</a> to begin account recovery.</p>
                 <p>If you do not have an Arcfolder account, click <a href=" {{- webRoot -}} auth/register">here</a> to register.</p>
             </form>
+        {% endif %}
         <!-- End auth/login.twig -->

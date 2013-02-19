@@ -1,39 +1,47 @@
         {#- Indentation to match parent template starts here #}
-        <!-- Begin auth/login.twig -->
+        <!-- Begin auth/register.twig -->
+            {% if check['register']['valid'] %}
+                <META HTTP-EQUIV="refresh" CONTENT="5;URL=login">
+                Registration successful. You will automatically redirected. Click <a href="login">here</a> to continue without waiting.
+            {% elseif user['valid'] %}
+                .already logged in
+                <br/>
+            {% else %}
+
             <form class="form-horizontal well form-register" name="register" action="register" method="post">
                 <legend>
                     <h2 class="form-auth-heading"> {{- authLoc['form_register'] -}} </h2>
                 </legend>
 
-{% if check['trigger'] is defined %}
-    {% if username['valid'] == false or password['valid'] == false or email['valid'] == false %}
-        <div class="controls">
-            <p class="help-block">
+                {% if check['trigger'] is defined %}
+                    {% if username['valid'] == false or password['valid'] == false or email['valid'] == false %}
+                        <div class="controls">
+                            <p class="help-block">
 
-        {% if username['valid'] == false %}
-            {% if check['username']['error_msg'] is defined %}
-                {{ check['username']['error_msg'] }}
-                <br/>
-            {% endif %}
-        {% endif %}
-        {% if password['valid'] == false %}
-            {% if check['password']['error_msg'] is defined %}
-                {{ check['password']['error_msg'] }}
-                <br/>
-            {% endif %}
-        {% endif %}
-        {% if email['valid'] == false %}
-            {% if check['email']['error_msg'] is defined %}
-                {{ check['email']['error_msg'] }}
-                <br/>
-            {% endif %}
-        {% endif %}
+                        {% if username['valid'] == false %}
+                            {% if check['username']['error_msg'] is defined %}
+                                {{ check['username']['error_msg'] }}
+                                <br/>
+                            {% endif %}
+                        {% endif %}
+                        {% if password['valid'] == false %}
+                            {% if check['password']['error_msg'] is defined %}
+                                {{ check['password']['error_msg'] }}
+                                <br/>
+                            {% endif %}
+                        {% endif %}
+                        {% if email['valid'] == false %}
+                            {% if check['email']['error_msg'] is defined %}
+                                {{ check['email']['error_msg'] }}
+                                <br/>
+                            {% endif %}
+                        {% endif %}
 
-            </p>
-        </div>
-        <br/>
-    {% endif %}
-{% endif %}
+                            </p>
+                        </div>
+                        <br/>
+                    {% endif %}
+                {% endif %}
 
                 {% if username['valid'] is defined %}
                     {% if  username['valid'] == true %}
@@ -78,9 +86,7 @@
                             maxlength=" {{- password['maxlength'] -}} "
                         />
                     </div>
-                <!--</div>-->
 
-                <!--<div class="control-group <?php //form::status($check, 'password'); ?>">-->
                     <label class="control-label" for="password_confirm"> {{- authLoc['form_password_again'] -}} </label>
                     <div class="controls">
                         <input
@@ -113,9 +119,7 @@
                             {% endif %}
                         />
                     </div>
-                <!--</div>-->
 
-                <!--<div class="control-group <?php //form::status($check, 'email'); ?>">-->
                     <label class="control-label"> {{- authLoc['form_email_again'] -}} </label>
                     <div class="controls">
                         <input
@@ -131,20 +135,22 @@
                     </div>
                 </div>
 
-                {% if captcha['valid'] is defined %}
-                    {% if captcha['valid'] == false %}
-                        <div class="control-group error">
+                {% if captcha['show'] %}
+                    {% if captcha['valid'] is defined %}
+                        {% if captcha['valid'] == false %}
+                            <div class="control-group error">
+                        {% endif %}
+                    {% else %}
+                        <div class="control-group">
                     {% endif %}
-                {% else %}
-                    <div class="control-group">
-                {% endif %}
-                    <label class="control-label"> {{- authLoc['form_captcha'] -}} </label>
-                    <div class="controls">
-                        {% autoescape false %}
-                            {{ captcha['render'] }}
-                        {% endautoescape %}
+                        <label class="control-label"> {{- authLoc['form_captcha'] -}} </label>
+                        <div class="controls">
+                            {% autoescape false %}
+                                {{ captcha['render'] }}
+                            {% endautoescape %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
@@ -156,4 +162,5 @@
                 </div>
                 <input name="trigger_register" type="hidden" value="true">
             </form>
-        <!-- End auth/login.twig -->
+        {% endif %}
+        <!-- End auth/register.twig -->

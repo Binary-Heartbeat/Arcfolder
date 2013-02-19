@@ -1,1 +1,11 @@
-<h2>Logout</h2>
+        {#- Indentation to match parent template starts here #}
+        <!-- Begin auth/logout.twig -->
+            {% if check['logout']['valid'] %}
+                <META HTTP-EQUIV="refresh" CONTENT="5;URL=../home">
+                Logout successful. You will automatically redirected. Click <a href="../home">here</a> to continue without waiting.
+            {% elseif user['valid'] %}
+                <h2>Logout</h2>
+            {% else %}
+                .
+            {% endif %}
+        <!-- End auth/logout.twig -->
